@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt_security
+    username: root
+    password: Admin@123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  security:
+    csrf:
+      enabled: false
+
+application:
+  security:
+    jwt:
+      secret-key: d9f8a46b4e96bbd63718497fa33f090c58b53a73eb8f07139a4fcdb0e41fb42e3879ef15fc63090f010a899ecc19fbea65445ba86a42df5f091dd56c81a0b322d46cd367c90f2703306d456d83d6c8cf246734ff62e92af0a87d861905b0eda69fdb84157ae95ac62e7a2f9bd75d180450e22007aa98d4d41d4d84a7c0f359ecf2c29eaa94863a0c3e36b6a11e9535fcc296231b44e10b74a10489b14b59d988ce18f66a64282166650221cb64fcd16442c5bf3ca0f07f4d2e06eb734a10c24aa229fd63a0839793afc5a1bf59cfee6e150426ec15262df307394d4317b7ec3935dc104b24a2787a5400bef6fbb9f2f697a96f69e8f2ada28686f2d9e6c3c729
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
